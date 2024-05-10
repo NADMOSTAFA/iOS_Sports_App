@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		015F8C152BEE9AD4009A053C /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F8C142BEE9AD4009A053C /* Sport.swift */; };
+		015F8C172BEE9EC5009A053C /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 015F8C162BEE9EC5009A053C /* HomeViewModel.swift */; };
 		017062172BEE8796006C9197 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017062162BEE8796006C9197 /* AppDelegate.swift */; };
 		017062192BEE8796006C9197 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017062182BEE8796006C9197 /* SceneDelegate.swift */; };
 		0170621B2BEE8796006C9197 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0170621A2BEE8796006C9197 /* ViewController.swift */; };
@@ -16,6 +18,7 @@
 		0170622E2BEE87A5006C9197 /* SportsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0170622D2BEE87A5006C9197 /* SportsAppTests.swift */; };
 		017062382BEE87A5006C9197 /* SportsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017062372BEE87A5006C9197 /* SportsAppUITests.swift */; };
 		0170623A2BEE87A5006C9197 /* SportsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017062392BEE87A5006C9197 /* SportsAppUITestsLaunchTests.swift */; };
+		017062472BEE8EE4006C9197 /* SportsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017062462BEE8EE4006C9197 /* SportsCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		015F8C142BEE9AD4009A053C /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
+		015F8C162BEE9EC5009A053C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		017062132BEE8795006C9197 /* SportsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		017062162BEE8796006C9197 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		017062182BEE8796006C9197 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +54,7 @@
 		017062332BEE87A5006C9197 /* SportsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		017062372BEE87A5006C9197 /* SportsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsAppUITests.swift; sourceTree = "<group>"; };
 		017062392BEE87A5006C9197 /* SportsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		017062462BEE8EE4006C9197 /* SportsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		015F8C102BEE9985009A053C /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0170621A2BEE8796006C9197 /* ViewController.swift */,
+				017062462BEE8EE4006C9197 /* SportsCollectionViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		015F8C122BEE99A3009A053C /* model */ = {
+			isa = PBXGroup;
+			children = (
+				015F8C142BEE9AD4009A053C /* Sport.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		015F8C132BEE99D6009A053C /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				015F8C162BEE9EC5009A053C /* HomeViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
 		0170620A2BEE8795006C9197 = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +130,12 @@
 		017062152BEE8795006C9197 /* SportsApp */ = {
 			isa = PBXGroup;
 			children = (
+				0170624B2BEE9301006C9197 /* DB */,
+				0170624A2BEE92F3006C9197 /* services */,
+				017062492BEE92E4006C9197 /* models */,
+				017062482BEE92D8006C9197 /* modules */,
 				017062162BEE8796006C9197 /* AppDelegate.swift */,
 				017062182BEE8796006C9197 /* SceneDelegate.swift */,
-				0170621A2BEE8796006C9197 /* ViewController.swift */,
 				0170621C2BEE8796006C9197 /* Main.storyboard */,
 				0170621F2BEE87A4006C9197 /* Assets.xcassets */,
 				017062212BEE87A4006C9197 /* LaunchScreen.storyboard */,
@@ -125,6 +159,45 @@
 				017062392BEE87A5006C9197 /* SportsAppUITestsLaunchTests.swift */,
 			);
 			path = SportsAppUITests;
+			sourceTree = "<group>";
+		};
+		017062482BEE92D8006C9197 /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				0170624C2BEE9353006C9197 /* home */,
+			);
+			path = modules;
+			sourceTree = "<group>";
+		};
+		017062492BEE92E4006C9197 /* models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		0170624A2BEE92F3006C9197 /* services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = services;
+			sourceTree = "<group>";
+		};
+		0170624B2BEE9301006C9197 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		0170624C2BEE9353006C9197 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				015F8C132BEE99D6009A053C /* viewModel */,
+				015F8C122BEE99A3009A053C /* model */,
+				015F8C102BEE9985009A053C /* view */,
+			);
+			path = home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +331,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				015F8C152BEE9AD4009A053C /* Sport.swift in Sources */,
+				015F8C172BEE9EC5009A053C /* HomeViewModel.swift in Sources */,
 				0170621B2BEE8796006C9197 /* ViewController.swift in Sources */,
 				017062172BEE8796006C9197 /* AppDelegate.swift in Sources */,
 				017062192BEE8796006C9197 /* SceneDelegate.swift in Sources */,
+				017062472BEE8EE4006C9197 /* SportsCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
