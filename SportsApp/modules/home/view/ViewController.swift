@@ -43,7 +43,21 @@ extension ViewController : UICollectionViewDataSource{
 extension ViewController : UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("hi")
+        let leagues = self.storyboard?.instantiateViewController(identifier: "leagues") as! LeaguesViewController
+        switch indexPath.row {
+        case 0:
+            homeViewModel.setSportType(type: EndPoints.football.rawValue)
+        case 1:
+            homeViewModel.setSportType(type: EndPoints.basketball.rawValue)
+        case 2:
+            homeViewModel.setSportType(type: EndPoints.tennis.rawValue)
+        case 3:
+            homeViewModel.setSportType(type: EndPoints.cricket.rawValue)
+        default:
+            homeViewModel.setSportType(type: "")
+        }
+        leagues.homeViewModel = self.homeViewModel
+        self.navigationController?.pushViewController(leagues, animated: true)
     }
     
 }
