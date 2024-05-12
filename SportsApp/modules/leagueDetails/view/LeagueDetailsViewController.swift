@@ -11,15 +11,29 @@ class LeagueDetailsViewController: UIViewController {
 
     @IBOutlet weak var detailsCollectionView: UICollectionView!
     @IBOutlet weak var leagueTitle: UILabel!
+    var leaguesViewModel  : LeaguesViewModelProtocol?
+    var leagueDetailsViewModel  = LeagueDetailsViewModel(network: NetworkService.instance)
+
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        leagueDetailsViewModel.loadUpcomingFixture(endPoint: leaguesViewModel!.getEndPoint(), leagueID: (leaguesViewModel?.getselectedLeague().leagueKey)!)
+        leagueDetailsViewModel.loadLatestResults(endPoint: leaguesViewModel!.getEndPoint(), leagueID: (leaguesViewModel?.getselectedLeague().leagueKey)!)
+        leagueDetailsViewModel.loadTeams(endPoint: leaguesViewModel!.getEndPoint(), leagueID: (leaguesViewModel?.getselectedLeague().leagueKey)!)
+        leagueTitle.text = leaguesViewModel?.getselectedLeague().leagueName
+   
+        
+        
     }
     
     @IBAction func backAction(_ sender: Any) {
+        
     }
     
     @IBAction func saveLeague(_ sender: Any) {
+        
     }
     
     /*

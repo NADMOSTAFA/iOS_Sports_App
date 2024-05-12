@@ -13,13 +13,18 @@ protocol LeaguesViewModelProtocol{
     func getLeagues() -> [League]
     func getselectedLeague() -> League
     func setselectedLeague(league : League)
+    
+    func getEndPoint() -> String
+    func setEndPoint(endPoint : String)
 }
 
 class LeaguesViewModel:LeaguesViewModelProtocol{
+        
     var network : NetworkServiceProtocol
     var bindLeaguesToViewConreoller : (() -> ())={}
     var leagues : [League]?
     var  selectedLeague : League?
+    var endPoint : String?
     
     init(network: NetworkServiceProtocol) {
         self.network = network
@@ -36,7 +41,6 @@ class LeaguesViewModel:LeaguesViewModelProtocol{
             case .failure(let error):
                 print("Error fetching teams: \(error)")
             }
-            
         }
     }
 
@@ -54,5 +58,13 @@ class LeaguesViewModel:LeaguesViewModelProtocol{
     
     func setselectedLeague(league : League) {
         selectedLeague = league
+    }
+    
+    func getEndPoint() -> String {
+        return endPoint ?? ""
+    }
+    
+    func setEndPoint(endPoint: String) {
+        self.endPoint = endPoint
     }
 }
