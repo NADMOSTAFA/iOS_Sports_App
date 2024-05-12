@@ -31,6 +31,7 @@ class LeaguesViewModel:LeaguesViewModelProtocol{
            switch result {
             case .success(let leagues):
                 self.leagues = leagues.result!
+               self.bindLeaguesToViewConreoller()
                 print("Teams fetched successfully: \(String(describing: self.leagues!.count))")
             case .failure(let error):
                 print("Error fetching teams: \(error)")
