@@ -50,7 +50,7 @@ class LeagueDetailsViewModel : LeagueDetailsViewModelProtocol{
             case .success(let upComingFixtures):
                print ("\(MyDateFormatter.getDateToUpcommingOneYearFromNow())")
                 self.upComingFixtures = upComingFixtures.result ?? []
-              // self.bindUpcomingFixtureToViewConreoller
+               self.bindUpcomingFixtureToViewConreoller()
                print("UpComing fetched successfully: \(String(describing: self.upComingFixtures!.count))")
             case .failure(let error):
                 print("Error fetching UpComing: \(error)")
@@ -66,7 +66,7 @@ class LeagueDetailsViewModel : LeagueDetailsViewModelProtocol{
                 case .success(let latestResults):
                    print ("\(MyDateFormatter.getDateToPreviousOneYearFromNow())")
                     self.latestResults = latestResults.result ?? []
-                   //self.bindLatestResultsToViewConreoller
+                   self.bindLatestResultsToViewConreoller()
                    print("latestResults fetched successfully: \(String(describing: self.latestResults!.count))")
                 case .failure(let error):
                     print("Error fetching latestResults: \(error)")
@@ -80,7 +80,7 @@ class LeagueDetailsViewModel : LeagueDetailsViewModelProtocol{
            switch result {
             case .success(let teams):
                 self.teams = teams.result ?? []
-               //self.bindTeamsToViewConreoller
+               //self.bindTeamsToViewConreoller()
                print("Teams fetched successfully: \(String(describing: self.teams!.count))")
             case .failure(let error):
                 print("Error fetching teams: \(error)")
