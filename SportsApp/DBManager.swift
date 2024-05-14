@@ -13,6 +13,7 @@ enum LeagueKeys : String{
     case leagueKey = "leagueKey"
     case leagueName = "leagueName"
     case leagueLogo = "leagueLogo"
+    case sportType = "sportType"
 }
 
 protocol DBManagerProtocol{
@@ -58,6 +59,7 @@ class DBManager : DBManagerProtocol{
         leagueObject.setValue(league.leagueKey, forKey: LeagueKeys.leagueKey.rawValue)
         leagueObject.setValue(league.leagueName, forKey: LeagueKeys.leagueName.rawValue)
         leagueObject.setValue(league.leagueLogo, forKey: LeagueKeys.leagueLogo.rawValue)
+        leagueObject.setValue(league.sportType, forKey: LeagueKeys.sportType.rawValue)
         saveContext()
     }
     
@@ -72,11 +74,12 @@ class DBManager : DBManagerProtocol{
                 guard
                     let leagueKey = (result as? NSManagedObject)?.value(forKey: LeagueKeys.leagueKey.rawValue) as? Int,
                     let leagueName = (result as? NSManagedObject)?.value(forKey: LeagueKeys.leagueName.rawValue) as? String,
-                    let leagueLogo = (result as? NSManagedObject)?.value(forKey:  LeagueKeys.leagueLogo.rawValue) as? String
+                    let leagueLogo = (result as? NSManagedObject)?.value(forKey:  LeagueKeys.leagueLogo.rawValue) as? String,
+                    let sportType = (result as? NSManagedObject)?.value(forKey:  LeagueKeys.sportType.rawValue) as? String
                 else {
                     return League()
                 }
-                return League(leagueKey: leagueKey, leagueName: leagueName, leagueLogo: leagueLogo)
+                return League(leagueKey: leagueKey, leagueName: leagueName, leagueLogo: leagueLogo ,sportType: sportType)
             }
             return leagues
         } catch {

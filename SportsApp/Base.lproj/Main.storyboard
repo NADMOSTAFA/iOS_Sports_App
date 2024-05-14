@@ -1,27 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KEp-9N-REQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KEp-9N-REQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Saved-->
+        <!--Favorite-->
         <scene sceneID="jKa-a4-LCy">
             <objects>
-                <viewController id="TGH-0Z-7rM" sceneMemberID="viewController">
+                <viewController id="TGH-0Z-7rM" customClass="FavoriteViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F3b-cg-onH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pdx-Ja-0uf">
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="tk4-xi-ZGP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pdx-Ja-0uf" firstAttribute="leading" secondItem="tk4-xi-ZGP" secondAttribute="leading" id="I7v-eh-bom"/>
+                            <constraint firstItem="pdx-Ja-0uf" firstAttribute="top" secondItem="tk4-xi-ZGP" secondAttribute="top" id="l05-NH-qQQ"/>
+                            <constraint firstItem="tk4-xi-ZGP" firstAttribute="bottom" secondItem="pdx-Ja-0uf" secondAttribute="bottom" id="neW-3S-aXF"/>
+                            <constraint firstItem="tk4-xi-ZGP" firstAttribute="trailing" secondItem="pdx-Ja-0uf" secondAttribute="trailing" id="ohR-az-69T"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Saved" image="bookmark" catalog="system" selectedImage="bookmark.fill" id="Wy9-3G-atK"/>
-                    <navigationItem key="navigationItem" id="LtF-Tm-2ZB"/>
+                    <navigationItem key="navigationItem" title="Favorite" id="LtF-Tm-2ZB"/>
+                    <connections>
+                        <outlet property="favoriteTableView" destination="pdx-Ja-0uf" id="MlQ-Wb-8go"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zqc-5u-ESf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -121,11 +136,10 @@
             </objects>
             <point key="canvasLocation" x="64" y="-1093"/>
         </scene>
-        <!--Item 2-->
+        <!--Navigation Controller-->
         <scene sceneID="Su4-Ze-2bb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KEp-9N-REQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="9Oj-qX-ZQK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kWn-bD-Kvi">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>

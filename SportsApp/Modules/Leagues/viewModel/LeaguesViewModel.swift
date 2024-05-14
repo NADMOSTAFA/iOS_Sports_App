@@ -7,6 +7,8 @@
 
 import Foundation
 
+
+
 protocol LeaguesViewModelProtocol{
     func loadData(endPoint : String)
     func getLeaguesCount() -> Int
