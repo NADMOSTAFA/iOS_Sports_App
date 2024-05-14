@@ -15,7 +15,6 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-
     }
 }
 

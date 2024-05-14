@@ -17,4 +17,11 @@ class League : Decodable {
         case leagueName = "league_name"
         case leagueLogo = "league_logo"
     }
+    
+    convenience init(leagueKey: Int, leagueName: String?, leagueLogo: String?) {
+        self.init()
+        self.leagueKey = leagueKey
+        self.leagueName = leagueName
+        self.leagueLogo = leagueLogo
+    }
 }
