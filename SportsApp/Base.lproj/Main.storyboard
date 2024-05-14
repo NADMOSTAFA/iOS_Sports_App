@@ -18,18 +18,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favorite" translatesAutoresizingMaskIntoConstraints="NO" id="aJe-FS-fxW">
+                                <rect key="frame" x="62" y="269" width="290" height="358"/>
+                                <color key="tintColor" systemColor="systemOrangeColor"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pdx-Ja-0uf">
                                 <rect key="frame" x="0.0" y="92" width="414" height="721"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" systemColor="systemOrangeColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tk4-xi-ZGP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="aJe-FS-fxW" firstAttribute="centerX" secondItem="F3b-cg-onH" secondAttribute="centerX" id="7ac-og-Bpf"/>
                             <constraint firstItem="pdx-Ja-0uf" firstAttribute="leading" secondItem="tk4-xi-ZGP" secondAttribute="leading" id="I7v-eh-bom"/>
                             <constraint firstItem="pdx-Ja-0uf" firstAttribute="top" secondItem="tk4-xi-ZGP" secondAttribute="top" id="l05-NH-qQQ"/>
                             <constraint firstItem="tk4-xi-ZGP" firstAttribute="bottom" secondItem="pdx-Ja-0uf" secondAttribute="bottom" id="neW-3S-aXF"/>
                             <constraint firstItem="tk4-xi-ZGP" firstAttribute="trailing" secondItem="pdx-Ja-0uf" secondAttribute="trailing" id="ohR-az-69T"/>
+                            <constraint firstItem="aJe-FS-fxW" firstAttribute="width" secondItem="F3b-cg-onH" secondAttribute="width" multiplier="0.7" id="qGj-Vq-szI"/>
+                            <constraint firstItem="aJe-FS-fxW" firstAttribute="height" secondItem="F3b-cg-onH" secondAttribute="height" multiplier="0.4" id="r09-0G-KaF"/>
+                            <constraint firstItem="aJe-FS-fxW" firstAttribute="centerY" secondItem="F3b-cg-onH" secondAttribute="centerY" id="ytI-Jh-6h9"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Saved" image="bookmark" catalog="system" selectedImage="bookmark.fill" id="Wy9-3G-atK"/>
@@ -40,7 +49,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zqc-5u-ESf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="649" y="-233"/>
+            <point key="canvasLocation" x="647.82608695652175" y="-233.03571428571428"/>
         </scene>
         <!--All Sports-->
         <scene sceneID="sDg-qO-fDg">
@@ -967,6 +976,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NMH-Tb-7V0">
                                 <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" systemColor="systemOrangeColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="W58-cn-kVZ"/>
@@ -995,6 +1005,7 @@
         <image name="bookmark.fill" catalog="system" width="110" height="128"/>
         <image name="chelsea" width="384" height="384"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="favorite" width="2000" height="2000"/>
         <image name="sportscourt" catalog="system" width="128" height="83"/>
         <image name="sportscourt.fill" catalog="system" width="128" height="83"/>
         <systemColor name="systemBackgroundColor">
