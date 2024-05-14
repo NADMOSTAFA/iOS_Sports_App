@@ -7,13 +7,20 @@
 
 import Foundation
 
-struct LeagueTeams: Codable {
+struct LeagueTeams: Decodable {
     let success: Int
     let result: [Team]?
 }
 
-struct Team: Codable {
-    let team_key: Int
-    let team_name: String?
-    let team_logo: String?
+struct Team: Decodable {
+    let teamKey: Int?
+    let teamName: String?
+    let teamLogo: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case teamKey = "team_key"
+        case teamName = "team_name"
+        case teamLogo = "team_logo"
+    }
 }
+

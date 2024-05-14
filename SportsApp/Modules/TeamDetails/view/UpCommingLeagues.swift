@@ -5,30 +5,51 @@
 //  Created by Israa on 11/05/2024.
 //
 
-import Foundation
-
-
-struct UpCommingLeagues: Codable {
+struct UpCommingLeagues: Decodable {
     let success: Int
     let result: [Upcoming]?
+    
+    enum CodingKeys: String, CodingKey {
+        case success
+        case result
+    }
 }
-struct Upcoming:Codable {
-    let home_team_logo:String?
-    let away_team_logo:String?
-    let event_home_team:String?
-    let event_away_team:String?
-    let event_date:String?
-    let event_time:String?
-    let league_round:String?
-    let league_season:String?
+
+struct Upcoming: Decodable {
+    let homeTeamLogo: String?
+    let awayTeamLogo: String?
+    let eventHomeTeam: String?
+    let eventAwayTeam: String?
+    let eventDate: String?
+    let eventTime: String?
+    let leagueRound: String?
+    let leagueSeason: String?
     // Tennis
-    let event_first_player:String?
-    let event_second_player:String?
-    let event_first_player_logo:String?
-    let event_second_player_logo:String?
+    let eventFirstPlayer: String?
+    let eventSecondPlayer: String?
+    let eventFirstPlayerLogo: String?
+    let eventSecondPlayerLogo: String?
     // Basketball and Crikcet
-    let event_home_team_logo:String?
-    let event_away_team_logo:String?
+    let eventHomeTeamLogo: String?
+    let eventAwayTeamLogo: String?
     // Cricket
-    let event_date_start:String?
+    let eventDateStart: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case homeTeamLogo = "home_team_logo"
+        case awayTeamLogo = "away_team_logo"
+        case eventHomeTeam = "event_home_team"
+        case eventAwayTeam = "event_away_team"
+        case eventDate = "event_date"
+        case eventTime = "event_time"
+        case leagueRound = "league_round"
+        case leagueSeason = "league_season"
+        case eventFirstPlayer = "event_first_player"
+        case eventSecondPlayer = "event_second_player"
+        case eventFirstPlayerLogo = "event_first_player_logo"
+        case eventSecondPlayerLogo = "event_second_player_logo"
+        case eventHomeTeamLogo = "event_home_team_logo"
+        case eventAwayTeamLogo = "event_away_team_logo"
+        case eventDateStart = "event_date_start"
+    }
 }
