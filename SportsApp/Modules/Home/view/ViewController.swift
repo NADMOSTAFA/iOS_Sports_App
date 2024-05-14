@@ -15,7 +15,11 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-
+        
+//        let db = DBManager.instance
+//        db.insertLeague(league: League(leagueKey: 4, leagueName: "UEFA Europa League", leagueLogo: "", sportType: EndPoints.football.rawValue))
+//        db.insertLeague(league: League(leagueKey:10, leagueName: "Nour", leagueLogo: "mostafa", sportType:EndPoints.football.rawValue))
+//        db.insertLeague(league: League(leagueKey: 5, leagueName: "Shrouk", leagueLogo: "mostafa", sportType: EndPoints.football.rawValue))
     }
 }
 

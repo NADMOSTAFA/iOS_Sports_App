@@ -79,6 +79,16 @@ extension LeaguesViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Isra Entry Point :)
         
+        let leagueDetails = self.storyboard?.instantiateViewController(identifier: "leagueDetails") as! LeagueDetailsViewController
+        //MARK: - Sould be Removed
+        leaguesViewModel.setEndPoint(endPoint: (homeViewModel?.getSportType())!)
+        //
+        // MARK: - Added
+        leaguesViewModel.getLeagues()[indexPath.row].sportType = homeViewModel?.getSportType()!
+        //End
+        leaguesViewModel.setselectedLeague(league: leaguesViewModel.getLeagues()[indexPath.row])
+        leagueDetails.leaguesViewModel = self.leaguesViewModel
+        self.present(leagueDetails, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

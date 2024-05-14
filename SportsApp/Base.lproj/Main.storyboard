@@ -10,18 +10,33 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Saved-->
+        <!--Favorite-->
         <scene sceneID="jKa-a4-LCy">
             <objects>
-                <viewController id="TGH-0Z-7rM" sceneMemberID="viewController">
+                <viewController id="TGH-0Z-7rM" customClass="FavoriteViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F3b-cg-onH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="pdx-Ja-0uf">
+                                <rect key="frame" x="0.0" y="92" width="414" height="721"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="tk4-xi-ZGP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pdx-Ja-0uf" firstAttribute="leading" secondItem="tk4-xi-ZGP" secondAttribute="leading" id="I7v-eh-bom"/>
+                            <constraint firstItem="pdx-Ja-0uf" firstAttribute="top" secondItem="tk4-xi-ZGP" secondAttribute="top" id="l05-NH-qQQ"/>
+                            <constraint firstItem="tk4-xi-ZGP" firstAttribute="bottom" secondItem="pdx-Ja-0uf" secondAttribute="bottom" id="neW-3S-aXF"/>
+                            <constraint firstItem="tk4-xi-ZGP" firstAttribute="trailing" secondItem="pdx-Ja-0uf" secondAttribute="trailing" id="ohR-az-69T"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Saved" image="bookmark" catalog="system" selectedImage="bookmark.fill" id="Wy9-3G-atK"/>
-                    <navigationItem key="navigationItem" id="LtF-Tm-2ZB"/>
+                    <navigationItem key="navigationItem" title="Favorite" id="LtF-Tm-2ZB"/>
+                    <connections>
+                        <outlet property="favoriteTableView" destination="pdx-Ja-0uf" id="MlQ-Wb-8go"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zqc-5u-ESf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -121,11 +136,10 @@
             </objects>
             <point key="canvasLocation" x="64" y="-1093"/>
         </scene>
-        <!--Item 2-->
+        <!--Navigation Controller-->
         <scene sceneID="Su4-Ze-2bb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KEp-9N-REQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="9Oj-qX-ZQK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kWn-bD-Kvi">
                         <rect key="frame" x="0.0" y="48" width="414" height="44"/>
@@ -143,7 +157,7 @@
         <!--League Details View Controller-->
         <scene sceneID="Jfl-r8-Ck7">
             <objects>
-                <viewController id="cBe-KM-zkQ" customClass="LeagueDetailsViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="leagueDetails" id="cBe-KM-zkQ" customClass="LeagueDetailsViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zpb-o1-UwU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -987,13 +1001,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
