@@ -37,11 +37,11 @@ class LeagueDetailsViewController: UIViewController {
         self.detailsCollectionView.setCollectionViewLayout(layout, animated: true)
         
         
-        leagueDetailsViewModel.loadUpcomingFixture(endPoint: leaguesViewModel!.getEndPoint(), leagueID: (leaguesViewModel?.getselectedLeague().leagueKey)!)
+        leagueDetailsViewModel.loadUpcomingFixture(endPoint: leaguesViewModel!.getselectedLeague().sportType!, leagueID: (leaguesViewModel?.getselectedLeague().leagueKey)!)
         
-        leagueDetailsViewModel.loadLatestResults(endPoint: leaguesViewModel!.getEndPoint(), leagueID: (leaguesViewModel?.getselectedLeague().leagueKey)!)
+        leagueDetailsViewModel.loadLatestResults(endPoint: leaguesViewModel!.getselectedLeague().sportType!, leagueID: (leaguesViewModel?.getselectedLeague().leagueKey)!)
         
-        leagueDetailsViewModel.loadTeams(endPoint: leaguesViewModel!.getEndPoint(), leagueID: (leaguesViewModel?.getselectedLeague().leagueKey)!)
+        leagueDetailsViewModel.loadTeams(endPoint: leaguesViewModel!.getselectedLeague().sportType!, leagueID: (leaguesViewModel?.getselectedLeague().leagueKey)!)
         
         leagueTitle.text = leaguesViewModel?.getselectedLeague().leagueName
         
@@ -66,10 +66,7 @@ class LeagueDetailsViewController: UIViewController {
         
     }
    
-        
-        
-    
-    
+
     
     func UpcomingSection()-> NSCollectionLayoutSection {
                let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1)
@@ -189,39 +186,40 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
               case 0:
                   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "upcommingEventCell", for: indexPath) as! UpCommingEventsCollectionViewCell
                  
-            if let imageUrl = URL(string: leaguesViewModel?.getEndPoint() == "basketball" ?  self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventHomeTeamLogo ?? "" : self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].homeTeamLogo ?? "") {
+            if let imageUrl = URL(string: leaguesViewModel?.getselectedLeague().sportType == "basketball" ?  self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventHomeTeamLogo ?? "" : self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].homeTeamLogo ?? "") {
                       cell.homeTeamLogo.kf.setImage(with: imageUrl)
                   }  
-            if let imageUrl = URL(string: leaguesViewModel?.getEndPoint() == "basketball" ?  self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventAwayTeamLogo ?? "" : self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].awayTeamLogo ?? "") {
+            if let imageUrl = URL(string: leaguesViewModel?.getselectedLeague().sportType == "basketball" ?  self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventAwayTeamLogo ?? "" : self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].awayTeamLogo ?? "") {
                       cell.awayTeamLogo.kf.setImage(with: imageUrl)
                   }
             
-            cell.homeTeamName.text = leaguesViewModel?.getEndPoint() == "tennis" ? self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventFirstPlayer ?? " ":
+            cell.homeTeamName.text = leaguesViewModel?.getselectedLeague().sportType == "tennis" ? self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventFirstPlayer ?? " ":
             self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventHomeTeam ?? ""
-                  cell.awayTeamName.text = leaguesViewModel?.getEndPoint() == "tennis" ? self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventSecondPlayer ?? " ":
+                  cell.awayTeamName.text = leaguesViewModel?.getselectedLeague().sportType == "tennis" ? self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventSecondPlayer ?? " ":
             self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventAwayTeam ?? ""
                 
                   cell.eventDate.text = self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventDate
                   cell.eventTime.text = self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventTime
+                cell.leagueName.text = self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].leagueRound
                   return cell
             
             case 1:
                   let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "latestEventCell", for: indexPath) as! LatestEventsCollectionViewCell
                  
-            if let imageUrl = URL(string: leaguesViewModel?.getEndPoint() == "basketball" ?  self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventHomeTeamLogo ?? "" : self.leagueDetailsViewModel.getLatestResults()[indexPath.row].homeTeamLogo ?? "") {
+            if let imageUrl = URL(string: leaguesViewModel?.getselectedLeague().sportType == "basketball" ?  self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventHomeTeamLogo ?? "" : self.leagueDetailsViewModel.getLatestResults()[indexPath.row].homeTeamLogo ?? "") {
                       cell.homeTeamLogo.kf.setImage(with: imageUrl)
                   }  
-            if let imageUrl = URL(string: leaguesViewModel?.getEndPoint() == "basketball" ?  self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventAwayTeamLogo ?? "" : self.leagueDetailsViewModel.getLatestResults()[indexPath.row].awayTeamLogo ?? "") {
+            if let imageUrl = URL(string: leaguesViewModel?.getselectedLeague().sportType == "basketball" ?  self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventAwayTeamLogo ?? "" : self.leagueDetailsViewModel.getLatestResults()[indexPath.row].awayTeamLogo ?? "") {
                       cell.awayTeamLogo.kf.setImage(with: imageUrl)
                   }
             
-            cell.homeTeamName.text = leaguesViewModel?.getEndPoint() == "tennis" ? self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventFirstPlayer ?? " ":
+            cell.homeTeamName.text = leaguesViewModel?.getselectedLeague().sportType == "tennis" ? self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventFirstPlayer ?? " ":
             self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventHomeTeam ?? ""
-                  cell.awayTeamName.text = leaguesViewModel?.getEndPoint() == "tennis" ? self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventSecondPlayer ?? " ":
+                  cell.awayTeamName.text = leaguesViewModel?.getselectedLeague().sportType == "tennis" ? self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventSecondPlayer ?? " ":
             self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventAwayTeam ?? ""
                 
                   cell.eventDate.text = self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventDate
-            if  leaguesViewModel?.getEndPoint() == "/cricket/" {
+            if  leaguesViewModel?.getselectedLeague().sportType! == "/cricket/" {
                 cell.eventResult.text = self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventHomeFinalResult
             } else{
                 cell.eventResult.text = self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventFinalResult
