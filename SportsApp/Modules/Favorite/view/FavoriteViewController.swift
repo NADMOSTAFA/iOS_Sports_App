@@ -23,7 +23,6 @@ class FavoriteViewController: UIViewController {
         view!.navigationItem.title = "Favorite Leagues"
         favoriteViewModel.loadData(endPoint: "")
         favoriteViewModel.bindLeaguesToViewController = {[weak self] in
-            print("Enter")
             DispatchQueue.main.async {
                 self?.reload()
             }
@@ -52,6 +51,10 @@ extension FavoriteViewController : UITableViewDataSource{
         cell.accessoryType = .disclosureIndicator
         if favoriteViewModel.getLeaguesCount() > 0 {
             let league = favoriteViewModel.getLeagues()[indexPath.row]
+            print("favorite")
+            print(".................." + String(favoriteViewModel.getLeaguesCount()))
+            print(".................." + (league.leagueName ?? ""))
+            print(".................." + league.sportType!)
             cell.setUp(league: league)
         }
        return cell
@@ -73,6 +76,7 @@ extension FavoriteViewController : UITableViewDataSource{
         let btnOk = UIAlertAction(title: "Ok", style: .default) { action in
             self.favoriteViewModel.deleteStroedLeague(league: self.favoriteViewModel.getLeagues()[indexPath.row],index: indexPath.row)
             self.favoriteTableView.reloadData()
+            self.reload()
         }
         let btnCancel = UIAlertAction(title: "Cancel", style: .destructive)
         alert.addAction(btnOk)

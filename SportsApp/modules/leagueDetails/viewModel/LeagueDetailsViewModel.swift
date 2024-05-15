@@ -33,9 +33,20 @@ class LeagueDetailsViewModel : LeagueDetailsViewModelProtocol {
     
     var  selectedTeam : Team?
     
+    let db = DBManager.instance
+    
     
     init(network: NetworkServiceProtocol) {
         self.network = network
+    }
+    
+    func saveLeague(savedLeague : League){
+        print(savedLeague.leagueName ?? "NO")
+        print(savedLeague.leagueKey ?? "NO")
+        print(savedLeague.leagueLogo ?? "NO")
+        DispatchQueue.global().async{
+            self.db.insertLeague(league: savedLeague)
+        }
     }
     
     func loadUpcomingFixture(endPoint: String, leagueID: Int) {
