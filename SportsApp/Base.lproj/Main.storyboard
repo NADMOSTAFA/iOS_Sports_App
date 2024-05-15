@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KEp-9N-REQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KEp-9N-REQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -157,7 +157,7 @@
         <!--League Details View Controller-->
         <scene sceneID="Jfl-r8-Ck7">
             <objects>
-                <viewController storyboardIdentifier="leagueDetails" id="cBe-KM-zkQ" customClass="LeagueDetailsViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="leagueDetails" modalPresentationStyle="fullScreen" id="cBe-KM-zkQ" customClass="LeagueDetailsViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zpb-o1-UwU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -192,7 +192,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="League Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIY-8U-bPe">
                                         <rect key="frame" x="144.5" y="9.5" width="117" height="21"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" systemColor="systemOrangeColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -213,38 +213,13 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nCS-JE-OTe">
                                     <size key="itemSize" width="341" height="47"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="sectionTitleCell" id="qWt-We-YzB" customClass="SectionTitleCollectionViewCell" customModule="SportsApp" customModuleProvider="target">
-                                        <rect key="frame" x="14.5" y="0.0" width="377" height="36"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="sg1-iG-nO4">
-                                            <rect key="frame" x="0.0" y="0.0" width="377" height="36"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UpComing Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhC-Pu-RqM">
-                                                    <rect key="frame" x="4" y="8.5" width="369" height="19"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="HhC-Pu-RqM" firstAttribute="centerY" secondItem="sg1-iG-nO4" secondAttribute="centerY" id="KpC-y6-yZE"/>
-                                                <constraint firstAttribute="trailing" secondItem="HhC-Pu-RqM" secondAttribute="trailing" constant="4" id="UZq-Xk-EGp"/>
-                                                <constraint firstItem="HhC-Pu-RqM" firstAttribute="leading" secondItem="sg1-iG-nO4" secondAttribute="leading" constant="4" id="fQR-tc-eFu"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="377" height="36"/>
-                                        <connections>
-                                            <outlet property="sectionTitleLabel" destination="HhC-Pu-RqM" id="UXI-Jb-ueq"/>
-                                        </connections>
-                                    </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="upcommingEventCell" id="gEK-z7-7wk" customClass="UpCommingEventsCollectionViewCell" customModule="SportsApp" customModuleProvider="target">
-                                        <rect key="frame" x="33" y="46" width="340" height="120"/>
+                                        <rect key="frame" x="33" y="50" width="340" height="120"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qIV-c1-gSj">
                                             <rect key="frame" x="0.0" y="0.0" width="340" height="120"/>
@@ -330,7 +305,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="latestEventCell" id="oAP-UD-4gd" customClass="LatestEventsCollectionViewCell" customModule="SportsApp" customModuleProvider="target">
-                                        <rect key="frame" x="32" y="176" width="342" height="85"/>
+                                        <rect key="frame" x="32" y="180" width="342" height="85"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Gc4-nW-TwR">
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="85"/>
@@ -405,7 +380,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="teamCell" id="arW-eF-fDi" customClass="TeamCollectionViewCell" customModule="SportsApp" customModuleProvider="target">
-                                        <rect key="frame" x="123" y="271" width="160" height="200"/>
+                                        <rect key="frame" x="123" y="275" width="160" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Kq5-N2-9fG">
                                             <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
@@ -439,6 +414,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="SectionHeaderView" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SectionHeaderView" id="A7M-0l-wzi" customClass="SectionHeaderView" customModule="SportsApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="406" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </collectionReusableView>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="m2U-QC-Qn3"/>

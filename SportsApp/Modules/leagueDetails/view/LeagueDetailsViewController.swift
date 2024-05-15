@@ -21,10 +21,12 @@ class LeagueDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+      
+
         detailsCollectionView.dataSource = self
         detailsCollectionView.delegate = self
         teamList = [:]
-
+        detailsCollectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeaderView")
         
         let layout = UICollectionViewCompositionalLayout { sectionIndex, enviroment in
                     switch sectionIndex {
@@ -68,8 +70,6 @@ class LeagueDetailsViewController: UIViewController {
             }
         }
         
-        
-        
     }
    
 
@@ -90,6 +90,7 @@ class LeagueDetailsViewController: UIViewController {
                section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8
                                                                , bottom: 8, trailing: 0)
         section.orthogonalScrollingBehavior = .paging
+        section.boundarySupplementaryItems = [self.supplementtryHeader()]
                
                //animation
                
@@ -122,7 +123,8 @@ class LeagueDetailsViewController: UIViewController {
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8
                                                             , bottom: 8, trailing: 8)
-    
+        section.boundarySupplementaryItems = [self.supplementtryHeader()]
+
             return section
         }
            
@@ -139,9 +141,11 @@ class LeagueDetailsViewController: UIViewController {
                                                             , bottom: 0, trailing: 15)
             
             let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 15
-                                                            , bottom: 10, trailing: 0)
+            section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8
+                                                            , bottom: 8, trailing: 8)
             section.orthogonalScrollingBehavior = .continuous
+          section.boundarySupplementaryItems = [self.supplementtryHeader()]
+
             // Animation
             section.visibleItemsInvalidationHandler = { items, offset, environment in
                 items.forEach { item in
@@ -218,9 +222,11 @@ class LeagueDetailsViewController: UIViewController {
 }
 
 extension LeagueDetailsViewController : UICollectionViewDataSource {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 3
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0 :
@@ -236,48 +242,48 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
-              case 0:
-                  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "upcommingEventCell", for: indexPath) as! UpCommingEventsCollectionViewCell
-                 
+        case 0:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "upcommingEventCell", for: indexPath) as! UpCommingEventsCollectionViewCell
+            
             if let imageUrl = URL(string: leaguesViewModel?.getselectedLeague().sportType == "basketball" ?  self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventHomeTeamLogo ?? "" : self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].homeTeamLogo ?? "") {
-                      cell.homeTeamLogo.kf.setImage(with: imageUrl)
-                  }  
+                cell.homeTeamLogo.kf.setImage(with: imageUrl)
+            }
             if let imageUrl = URL(string: leaguesViewModel?.getselectedLeague().sportType == "basketball" ?  self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventAwayTeamLogo ?? "" : self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].awayTeamLogo ?? "") {
-                      cell.awayTeamLogo.kf.setImage(with: imageUrl)
-                  }
+                cell.awayTeamLogo.kf.setImage(with: imageUrl)
+            }
             
             cell.homeTeamName.text = leaguesViewModel?.getselectedLeague().sportType == "tennis" ? self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventFirstPlayer ?? " ":
             self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventHomeTeam ?? ""
-                  cell.awayTeamName.text = leaguesViewModel?.getselectedLeague().sportType == "tennis" ? self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventSecondPlayer ?? " ":
+            cell.awayTeamName.text = leaguesViewModel?.getselectedLeague().sportType == "tennis" ? self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventSecondPlayer ?? " ":
             self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventAwayTeam ?? ""
-                
-                  cell.eventDate.text = self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventDate
-                  cell.eventTime.text = self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventTime
-                cell.leagueName.text = self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].leagueRound
-                  return cell
             
-            case 1:
-                  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "latestEventCell", for: indexPath) as! LatestEventsCollectionViewCell
-                 
+            cell.eventDate.text = self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventDate
+            cell.eventTime.text = self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].eventTime
+            cell.leagueName.text = self.leagueDetailsViewModel.getUpcomingFixtures()[indexPath.row].leagueRound
+            return cell
+            
+        case 1:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "latestEventCell", for: indexPath) as! LatestEventsCollectionViewCell
+            
             if let imageUrl = URL(string: leaguesViewModel?.getselectedLeague().sportType == "basketball" ?  self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventHomeTeamLogo ?? "" : self.leagueDetailsViewModel.getLatestResults()[indexPath.row].homeTeamLogo ?? "") {
-                      cell.homeTeamLogo.kf.setImage(with: imageUrl)
-                  }  
+                cell.homeTeamLogo.kf.setImage(with: imageUrl)
+            }
             if let imageUrl = URL(string: leaguesViewModel?.getselectedLeague().sportType == "basketball" ?  self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventAwayTeamLogo ?? "" : self.leagueDetailsViewModel.getLatestResults()[indexPath.row].awayTeamLogo ?? "") {
-                      cell.awayTeamLogo.kf.setImage(with: imageUrl)
-                  }
+                cell.awayTeamLogo.kf.setImage(with: imageUrl)
+            }
             
             cell.homeTeamName.text = leaguesViewModel?.getselectedLeague().sportType == "tennis" ? self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventFirstPlayer ?? " ":
             self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventHomeTeam ?? ""
-                  cell.awayTeamName.text = leaguesViewModel?.getselectedLeague().sportType == "tennis" ? self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventSecondPlayer ?? " ":
+            cell.awayTeamName.text = leaguesViewModel?.getselectedLeague().sportType == "tennis" ? self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventSecondPlayer ?? " ":
             self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventAwayTeam ?? ""
-                
-                  cell.eventDate.text = self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventDate
+            
+            cell.eventDate.text = self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventDate
             if  leaguesViewModel?.getselectedLeague().sportType! == "/cricket/" {
                 cell.eventResult.text = self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventHomeFinalResult
             } else{
                 cell.eventResult.text = self.leagueDetailsViewModel.getLatestResults()[indexPath.row].eventFinalResult
             }
-                    
+            
             return cell
             
         case 2:
@@ -285,20 +291,61 @@ extension LeagueDetailsViewController : UICollectionViewDataSource {
             let index = Array(teamList!.keys)[indexPath.row]
             cell.teamName.text = teamList?[index]?.teamName
             if let imageUrl = URL(string: teamList?[index]?.teamLogo ?? ""){
-                         cell.teamLogo.kf.setImage(with:imageUrl)
-                     }
-                     else{
-                         cell.teamLogo.image = UIImage(named: "AlAhy")
-                     }
+                cell.teamLogo.kf.setImage(with:imageUrl)
+            }
+            else{
+                cell.teamLogo.image = UIImage(named: "AlAhy")
+            }
             return cell
-              default:
-                  return UICollectionViewCell()
-              }
+        default:
+            return UICollectionViewCell()
+        }
     }
     
+    func supplementtryHeader()->NSCollectionLayoutBoundarySupplementaryItem{
+        .init(layoutSize: .init(widthDimension:.fractionalWidth(1), heightDimension: .absolute(36)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top )
+    }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        print ("Enter Supplementary")
+        if kind == UICollectionView.elementKindSectionHeader{
+            let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeaderView", for: indexPath) as! SectionHeaderView
+            
+            switch indexPath.section {
+            case 0 :
+                sectionHeader.setTitle(  "Upcoming Events:" )
+                return sectionHeader
+                
+            case 1 :
+                sectionHeader.setTitle( "latest Events:")
+                return sectionHeader
+                
+            case 2 :
+                sectionHeader.setTitle( "Teams:")
+                return sectionHeader
+                
+            default :
+                return sectionHeader
+            }
+            
+            
+        }
+        return UICollectionViewCell()
+    }
 }
+    
+    
+
 
 extension LeagueDetailsViewController : UICollectionViewDelegate {
-    
+ 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+            switch section {
+            case 0:
+                return .zero
+            default:
+                return CGSize(width: collectionView.bounds.width, height: 70)
+            }
+        }
 }
