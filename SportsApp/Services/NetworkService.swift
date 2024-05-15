@@ -22,7 +22,6 @@ class NetworkService :  NetworkServiceProtocol{
        
     func fetchData<T: Decodable>(from endPoint: String, parameters: [String: Any]? = nil, completion: @escaping (Result<T, Error>) -> Void) {
         let url = BaseUrl + endPoint + apiKey
-//        let url =  "https://apiv2.allsportsapi.com/football/?met=Leagues&APIkey=!APIkey=56c5d22f9e6836a9515a17ed6572c4c41869c799c8a631aac3d2e26bca1afcda!"
         print(url + "\n")
         if let url = URL(string: url) {
             AF.request(url, parameters: parameters).responseData { response in

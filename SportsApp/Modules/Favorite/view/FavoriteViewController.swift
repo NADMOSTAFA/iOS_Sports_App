@@ -63,6 +63,10 @@ extension FavoriteViewController : UITableViewDataSource{
        return cell
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+    }
+    
     
 }
 
@@ -71,7 +75,7 @@ extension FavoriteViewController : UITableViewDelegate{
         if NetworkAvailibility.isConnected() {
             let leagueDetails = self.storyboard?.instantiateViewController(identifier: "leagueDetails") as! LeagueDetailsViewController
             //MARK: - Sould be Removed
-            favoriteViewModel.setEndPoint(endPoint: (EndPoints.football.rawValue))
+            //favoriteViewModel.setEndPoint(endPoint: (EndPoints.football.rawValue))
             //
             // MARK: - Added
             favoriteViewModel.getLeagues()[indexPath.row].sportType = favoriteViewModel.getEndPoint()
