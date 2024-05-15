@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TeamDetails: Decodable {
+class TeamDetails: Decodable {
     let success: Int?
     let result: [TeamDetailsResult]?
 }
