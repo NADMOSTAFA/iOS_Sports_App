@@ -211,8 +211,6 @@ class LeagueDetailsViewController: UIViewController {
     }
     
     @IBAction func saveLeague(_ sender: Any) {
-        print(leaguesViewModel?.getselectedLeague().sportType!)
-
         leagueDetailsViewModel.saveLeague(savedLeague: (leaguesViewModel?.getselectedLeague())!)
     }
     

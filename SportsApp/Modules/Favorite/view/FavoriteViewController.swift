@@ -51,10 +51,6 @@ extension FavoriteViewController : UITableViewDataSource{
         cell.accessoryType = .disclosureIndicator
         if favoriteViewModel.getLeaguesCount() > 0 {
             let league = favoriteViewModel.getLeagues()[indexPath.row]
-            print("favorite")
-            print(".................." + String(favoriteViewModel.getLeaguesCount()))
-            print(".................." + (league.leagueName ?? ""))
-            print(".................." + league.sportType!)
             cell.setUp(league: league)
         }
        return cell

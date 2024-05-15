@@ -23,7 +23,6 @@ class LeaguesViewController: UIViewController {
         setIndicator()
         leaguesViewModel.loadData(endPoint: homeViewModel!.getSportType()!)
         leaguesViewModel.bindLeaguesToViewConreoller = {[weak self] in
-            print("Enter")
             DispatchQueue.main.async {
                 self?.indicator?.stopAnimating()
                 self?.leaguesTableView.reloadData()

@@ -56,12 +56,6 @@ class DBManager : DBManagerProtocol{
     // MARK: - CRUD Operations
     
     func insertLeague(league :League) {
-        print("From DB ----------------------")
-        print(league.leagueName ?? "NO")
-        print(league.leagueKey ?? "NO")
-        print(league.sportType ?? "NO")
-        print(league.leagueLogo ?? "NO")
-        
         let context = persistentContainer.viewContext
         let leagueEntity = NSEntityDescription.entity(forEntityName: LeagueKeys.leagueTable.rawValue, in: context)
         let leagueObject = NSManagedObject(entity: leagueEntity!, insertInto: context)
@@ -83,18 +77,12 @@ class DBManager : DBManagerProtocol{
                 guard
                     let leagueKey = (result as? NSManagedObject)?.value(forKey: LeagueKeys.leagueKey.rawValue) as? Int,
                     let leagueName = (result as? NSManagedObject)?.value(forKey: LeagueKeys.leagueName.rawValue) as? String,
-//                    let leagueLogo = (result as? NSManagedObject)?.value(forKey:  LeagueKeys.leagueLogo.rawValue) as? String,
+                    let leagueLogo = (result as? NSManagedObject)?.value(forKey:  LeagueKeys.leagueLogo.rawValue) as? String,
                     let sportType = (result as? NSManagedObject)?.value(forKey:  LeagueKeys.sportType.rawValue) as? String
                 else {
-                    print("from DB")
-                    print("enter")
                     return League()
                 }
-                print("from DB")
-                print(leagueKey)
-                print(leagueName)
-                return League(leagueKey: leagueKey, leagueName: leagueName, leagueLogo: "" ,sportType: sportType)
-//                return League(leagueKey: leagueKey, leagueName: leagueName, leagueLogo: leagueLogo ,sportType: sportType)
+                return League(leagueKey: leagueKey, leagueName: leagueName, leagueLogo: leagueLogo ,sportType: sportType)
             }
             return leagues
         } catch {
