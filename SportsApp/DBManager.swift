@@ -19,9 +19,12 @@ enum LeagueKeys : String{
 protocol DBManagerProtocol{
     func insertLeague(league :League)
     func getAllLeagues() -> [League]
+    func deleteLeague(league :League)
+    func checkIfExist(league : League) -> Bool?
 }
 
 class DBManager : DBManagerProtocol{
+    
     static let instance = DBManager()
     
     private init() {}
@@ -87,4 +90,43 @@ class DBManager : DBManagerProtocol{
             return []
         }
     }
+    
+    func deleteLeague(league :League){
+        let context = persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: LeagueKeys.leagueTable.rawValue)
+        let predicate = "leagueKey == %d AND leagueName == %@ AND sportType == %@"
+        fetchRequest.predicate = NSPredicate(format: predicate, league.leagueKey!, league.leagueName!, league.sportType!)
+        
+        do {
+            if let result = try context.fetch(fetchRequest).first as? NSManagedObject {
+                context.delete(result)
+                try context.save()
+            }else{
+                print ("No matching object found in DB")
+                
+            }
+        }catch {
+            print("Error deleting obj: \(error.localizedDescription)")
+        }
+    }
+    
+    func checkIfExist(league : League) -> Bool?{
+        let context = persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: LeagueKeys.leagueTable.rawValue)
+        let predicate = "leagueKey == %d AND LeagueName == %@ AND sportType == %@"
+        fetchRequest.predicate = NSPredicate(format: predicate, league.leagueKey!, league.leagueName!, league.sportType!)
+        do {
+            if let result = try context.fetch(fetchRequest).first as? NSManagedObject {
+                print("League already exist")
+                return true
+            } else {
+                return false
+            }
+        } catch {
+            print("Error fetching exist obj: \(error.localizedDescription)")
+            return nil
+        }
+        
+    }
 }
+

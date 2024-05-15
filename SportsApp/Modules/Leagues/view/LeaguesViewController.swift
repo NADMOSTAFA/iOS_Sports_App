@@ -16,7 +16,10 @@ class LeaguesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let db = DBManager.instance
+        db.insertLeague(league: League(leagueKey: 4, leagueName: "UEFA Europa League1", leagueLogo: "", sportType: EndPoints.football.rawValue))
+        db.insertLeague(league: League(leagueKey: 4, leagueName: "UEFA Europa League2", leagueLogo: "", sportType: EndPoints.football.rawValue))
+        db.insertLeague(league: League(leagueKey: 4, leagueName: "UEFA Europa League3", leagueLogo: "", sportType: EndPoints.football.rawValue))
 
         
         leaguesTableView.dataSource = self
@@ -86,14 +89,10 @@ extension LeaguesViewController : UITableViewDataSource{
 
 extension LeaguesViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Isra Entry Point :)
         if NetworkAvailibility.isConnected(){
             let leagueDetails = self.storyboard?.instantiateViewController(identifier: "leagueDetails") as! LeagueDetailsViewController
-            //MARK: - Sould be Removed
-            leaguesViewModel.setEndPoint(endPoint: (homeViewModel?.getSportType())!)
-            //
             // MARK: - Added
-            leaguesViewModel.getLeagues()[indexPath.row].sportType = homeViewModel?.getSportType()!
+//            leaguesViewModel.getLeagues()[indexPath.row].sportType = homeViewModel?.getSportType()!
             //End
             leaguesViewModel.setselectedLeague(league: leaguesViewModel.getLeagues()[indexPath.row])
             leagueDetails.leaguesViewModel = self.leaguesViewModel
