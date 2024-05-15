@@ -12,32 +12,26 @@ class FavoriteViewController: UIViewController {
     let favoriteViewModel =  FavoriteViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         favoriteTableView.dataSource = self
         favoriteTableView.delegate = self
         favoriteTableView.register(LeagueTableViewCell.nib(), forCellReuseIdentifier: "LeagueTableViewCell")
-        
-        favoriteViewModel.loadData(endPoint: "")
-        favoriteViewModel.bindLeaguesToViewController = {[weak self] in
-            print("Enter")
-            //DispatchQueue.main.async {
-            if(self?.favoriteViewModel.getLeaguesCount() == 0){
-                self?.favoriteTableView.isHidden = true
-            }else{
-                self?.favoriteTableView.isHidden = false
-                self?.favoriteTableView.reloadData()
-            }
-                
-           // }
-        }
-        
+        reload()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let view = self.navigationController!.visibleViewController;
         view!.navigationItem.title = "Favorite Leagues"
-        
+        favoriteViewModel.loadData(endPoint: "")
+        favoriteViewModel.bindLeaguesToViewController = {[weak self] in
+            print("Enter")
+            DispatchQueue.main.async {
+                self?.reload()
+            }
+        }
+        reload()
+    }
+    
+    func reload()  {
         if(favoriteViewModel.getLeaguesCount() == 0){
             favoriteTableView.isHidden = true
         }else{
@@ -64,22 +58,33 @@ extension FavoriteViewController : UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, completionHandler in
+            self.setConfirmationAlert(indexPath: indexPath)
+            completionHandler(true)
+        }
+        deleteAction.image = UIImage(systemName: "tarsh")
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipeConfiguration
         
     }
     
-    
+    func setConfirmationAlert(indexPath : IndexPath){
+        let alert = UIAlertController(title: "Confirmation Required", message: "Are you sure you want to delete this item?", preferredStyle: .alert)
+        let btnOk = UIAlertAction(title: "Ok", style: .default) { action in
+            self.favoriteViewModel.deleteStroedLeague(league: self.favoriteViewModel.getLeagues()[indexPath.row],index: indexPath.row)
+            self.favoriteTableView.reloadData()
+        }
+        let btnCancel = UIAlertAction(title: "Cancel", style: .destructive)
+        alert.addAction(btnOk)
+        alert.addAction(btnCancel)
+        self.present(alert, animated: true)
+    }
 }
 
 extension FavoriteViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if NetworkAvailibility.isConnected() {
             let leagueDetails = self.storyboard?.instantiateViewController(identifier: "leagueDetails") as! LeagueDetailsViewController
-            //MARK: - Sould be Removed
-            //favoriteViewModel.setEndPoint(endPoint: (EndPoints.football.rawValue))
-            //
-            // MARK: - Added
-            favoriteViewModel.getLeagues()[indexPath.row].sportType = favoriteViewModel.getEndPoint()
-            //End
             favoriteViewModel.setselectedLeague(league: favoriteViewModel.getLeagues()[indexPath.row])
             print(favoriteViewModel.getLeagues()[indexPath.row].leagueName!)
             leagueDetails.leaguesViewModel = self.favoriteViewModel

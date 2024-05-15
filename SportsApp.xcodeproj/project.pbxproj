@@ -38,6 +38,7 @@
 		0EFF20D82BEFBB3500A2F185 /* PlayerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF20D72BEFBB3500A2F185 /* PlayerCollectionViewCell.swift */; };
 		0EFF20DA2BEFBB9300A2F185 /* PlayerDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF20D92BEFBB9300A2F185 /* PlayerDetailsCollectionViewCell.swift */; };
 		0EFF20DC2BEFBEB300A2F185 /* pageControllerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF20DB2BEFBEB300A2F185 /* pageControllerCollectionViewCell.swift */; };
+		186BEC202BF4F71200DFFC36 /* SportsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 186BEC1E2BF4F71200DFFC36 /* SportsApp.xcdatamodeld */; };
 		18ADB7892BF0FD31001A8EAF /* LeaguesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ADB7882BF0FD31001A8EAF /* LeaguesViewModel.swift */; };
 		18DFE2EB2BF4099E0092E089 /* NetworkAvailibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DFE2EA2BF4099E0092E089 /* NetworkAvailibility.swift */; };
 		18DFE2ED2BF40A400092E089 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 18DFE2EC2BF40A400092E089 /* Reachability */; };
@@ -103,6 +104,7 @@
 		0EFF20D72BEFBB3500A2F185 /* PlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewCell.swift; sourceTree = "<group>"; };
 		0EFF20D92BEFBB9300A2F185 /* PlayerDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		0EFF20DB2BEFBEB300A2F185 /* pageControllerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pageControllerCollectionViewCell.swift; sourceTree = "<group>"; };
+		186BEC1F2BF4F71200DFFC36 /* SportsApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SportsApp.xcdatamodel; sourceTree = "<group>"; };
 		18ADB7882BF0FD31001A8EAF /* LeaguesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesViewModel.swift; sourceTree = "<group>"; };
 		18DFE2EA2BF4099E0092E089 /* NetworkAvailibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAvailibility.swift; sourceTree = "<group>"; };
 		18E817992BF2AD16000C42C9 /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DBManager.swift; path = SportsApp/DBManager.swift; sourceTree = SOURCE_ROOT; };
@@ -201,6 +203,7 @@
 				0170621F2BEE87A4006C9197 /* Assets.xcassets */,
 				017062212BEE87A4006C9197 /* LaunchScreen.storyboard */,
 				017062242BEE87A4006C9197 /* Info.plist */,
+				186BEC1E2BF4F71200DFFC36 /* SportsApp.xcdatamodeld */,
 			);
 			path = SportsApp;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				0E5904E52BF12892004C3CA0 /* LeagueDetailsViewModel.swift in Sources */,
 				0E1BBAC02BEF541500CBBBBF /* TeamCollectionViewCell.swift in Sources */,
 				01B2BF8E2BEFE539002F746A /* LeaguesViewController.swift in Sources */,
+				186BEC202BF4F71200DFFC36 /* SportsApp.xcdatamodeld in Sources */,
 				0E1BBABC2BEF53CC00CBBBBF /* UpCommingEventsCollectionViewCell.swift in Sources */,
 				0EFF20D42BEFBAC900A2F185 /* TeamDetailsViewController.swift in Sources */,
 				0EFF20D82BEFBB3500A2F185 /* PlayerCollectionViewCell.swift in Sources */,
@@ -957,6 +961,20 @@
 			productName = AlamofireDynamic;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		186BEC1E2BF4F71200DFFC36 /* SportsApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				186BEC1F2BF4F71200DFFC36 /* SportsApp.xcdatamodel */,
+			);
+			currentVersion = 186BEC1F2BF4F71200DFFC36 /* SportsApp.xcdatamodel */;
+			name = SportsApp.xcdatamodeld;
+			path = /Users/apple/Documents/iOS_Sports_App/SportsApp/SportsApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0170620B2BEE8795006C9197 /* Project object */;
 }

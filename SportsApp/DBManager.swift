@@ -94,7 +94,7 @@ class DBManager : DBManagerProtocol{
     func deleteLeague(league :League){
         let context = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: LeagueKeys.leagueTable.rawValue)
-        let predicate = "leagueKey == %d AND LeagueName == %@ AND sportType == %@"
+        let predicate = "leagueKey == %d AND leagueName == %@ AND sportType == %@"
         fetchRequest.predicate = NSPredicate(format: predicate, league.leagueKey!, league.leagueName!, league.sportType!)
         
         do {

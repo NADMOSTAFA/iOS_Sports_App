@@ -17,9 +17,16 @@ class FavoriteViewModel :  LeaguesViewModelProtocol{
     var endPoint : String?
     
     func loadData(endPoint: String) {
-        leagues = db.getAllLeagues()
-        guard let leagues = leagues else {return}
-        bindLeaguesToViewController()
+        DispatchQueue.global().async {
+            self.leagues = self.db.getAllLeagues()
+            guard let _ = self.leagues else {return}
+            self.bindLeaguesToViewController()
+        }
+    }
+    
+    func deleteStroedLeague(league:League ,index:Int){
+        leagues?.remove(at: index)
+        db.deleteLeague(league: league)
     }
     
     func getLeaguesCount() -> Int {
