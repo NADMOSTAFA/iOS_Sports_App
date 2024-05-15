@@ -474,7 +474,7 @@
         <!--Team Details View Controller-->
         <scene sceneID="Yfj-nN-AjP">
             <objects>
-                <viewController id="4jX-ND-3Xs" customClass="TeamDetailsViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamDetails" id="4jX-ND-3Xs" customClass="TeamDetailsViewController" customModule="SportsApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nuN-Rw-eNs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
