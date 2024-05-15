@@ -66,7 +66,7 @@ class LeagueDetailsViewModel : LeagueDetailsViewModelProtocol {
                 case .failure(let error):
                     print("Error fetching latestResults: \(error)")
                 }
-            }   
+            }
     }
     
 
