@@ -24,11 +24,20 @@ struct Upcoming: Decodable {
     let eventTime: String?
     let leagueRound: String?
     let leagueSeason: String?
+    var home_team_key :Int?
+    var away_team_key : Int?
+    
+    var eventFinalResult:String?
+       // Cracket
+    var eventHomeFinalResult:String?
+    
     // Tennis
     let eventFirstPlayer: String?
     let eventSecondPlayer: String?
     let eventFirstPlayerLogo: String?
     let eventSecondPlayerLogo: String?
+    var first_player_key: Int?
+    var second_player_key :Int?
     // Basketball and Crikcet
     let eventHomeTeamLogo: String?
     let eventAwayTeamLogo: String?
@@ -51,5 +60,13 @@ struct Upcoming: Decodable {
         case eventHomeTeamLogo = "event_home_team_logo"
         case eventAwayTeamLogo = "event_away_team_logo"
         case eventDateStart = "event_date_start"
+        case home_team_key = "home_team_key"
+        case away_team_key = "away_team_key"
+        case first_player_key = "first_player_key"
+        case second_player_key = "second_player_key"
+        case eventFinalResult = "event_final_result"
+        case eventHomeFinalResult = "event_home_final_result"
+        
     }
 }
+
