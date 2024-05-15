@@ -27,7 +27,7 @@ class LeaguesViewModel:LeaguesViewModelProtocol{
     init(network: NetworkServiceProtocol) {
         self.network = network
     }
-    
+      
     func loadData(endPoint : String ){
         network.fetchData(from: endPoint, parameters: ["met":"Leagues"]){
             (result: Result<APIResponse<League>, Error>) in

@@ -15,15 +15,6 @@ class ViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
-        
-       
-        
-//        let db = DBManager.instance
-//        db.insertLeague(league: League(leagueKey: 4, leagueName: "UEFA Europa League1", leagueLogo: "", sportType: EndPoints.football.rawValue))
-//        db.insertLeague(league: League(leagueKey: 4, leagueName: "UEFA Europa League2", leagueLogo: "", sportType: EndPoints.football.rawValue))
-//        db.insertLeague(league: League(leagueKey: 4, leagueName: "UEFA Europa League3", leagueLogo: "", sportType: EndPoints.football.rawValue))
-//        db.insertLeague(league: League(leagueKey:10, leagueName: "Nour", leagueLogo: "mostafa", sportType:EndPoints.football.rawValue))
-//        db.insertLeague(league: League(leagueKey: 5, leagueName: "Shrouk", leagueLogo: "mostafa", sportType: EndPoints.football.rawValue))
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -16,12 +16,6 @@ class LeaguesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let db = DBManager.instance
-        db.insertLeague(league: League(leagueKey: 4, leagueName: "UEFA Europa League1", leagueLogo: "", sportType: EndPoints.football.rawValue))
-        db.insertLeague(league: League(leagueKey: 4, leagueName: "UEFA Europa League2", leagueLogo: "", sportType: EndPoints.football.rawValue))
-        db.insertLeague(league: League(leagueKey: 4, leagueName: "UEFA Europa League3", leagueLogo: "", sportType: EndPoints.football.rawValue))
-
-        
         leaguesTableView.dataSource = self
         leaguesTableView.delegate = self
         leaguesTableView.register(LeagueTableViewCell.nib(), forCellReuseIdentifier: "LeagueTableViewCell")
@@ -29,26 +23,11 @@ class LeaguesViewController: UIViewController {
         setIndicator()
         leaguesViewModel.loadData(endPoint: homeViewModel!.getSportType()!)
         leaguesViewModel.bindLeaguesToViewConreoller = {[weak self] in
-            print("Enter")
             DispatchQueue.main.async {
                 self?.indicator?.stopAnimating()
                 self?.leaguesTableView.reloadData()
             }
         }
-        
-            
-//        network.fetchData(from: homeViewMode!.getSportType()!, parameters: ["met":"Leagues"]) { (result: Result<APIResponse<League>, Error>) in
-//            switch result {
-//            case .success(let leagues):
-//                // Handle successful data retrieval
-//                self.leagueList = leagues.result!
-//                self.leaguesTableView.reloadData()
-//                print("Teams fetched successfully: \(String(describing: self.leagueList!.count))")
-//            case .failure(let error):
-//                // Handle error
-//                print("Error fetching teams: \(error)")
-//            }
-//        }
         
     }
     
@@ -91,10 +70,11 @@ extension LeaguesViewController : UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if NetworkAvailibility.isConnected(){
             let leagueDetails = self.storyboard?.instantiateViewController(identifier: "leagueDetails") as! LeagueDetailsViewController
-            // MARK: - Added
-//            leaguesViewModel.getLeagues()[indexPath.row].sportType = homeViewModel?.getSportType()!
-            //End
-            leaguesViewModel.setselectedLeague(league: leaguesViewModel.getLeagues()[indexPath.row])
+            let league = leaguesViewModel.getLeagues()[indexPath.row]
+            if(league.leagueLogo == nil){
+                league.leagueLogo = ""
+            }
+            leaguesViewModel.setselectedLeague(league: league)
             leagueDetails.leaguesViewModel = self.leaguesViewModel
             self.present(leagueDetails, animated: true)
         }else{

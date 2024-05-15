@@ -191,7 +191,6 @@ class LeagueDetailsViewController: UIViewController {
         for result in latestResults {
             if let homeTeamKey = leaguesViewModel?.getselectedLeague().sportType == "tennis" ? result.first_player_key : result.home_team_key,
                let awayTeamKey = leaguesViewModel?.getselectedLeague().sportType == "tennis" ? result.second_player_key : result.away_team_key {
-                print("enter in if con")
                 if teamList?[homeTeamKey] == nil {
                     teamList?[homeTeamKey] = Team(teamKey: homeTeamKey, teamName: result.eventHomeTeam, teamLogo: result.homeTeamLogo)
                 }
@@ -212,7 +211,7 @@ class LeagueDetailsViewController: UIViewController {
     }
     
     @IBAction func saveLeague(_ sender: Any) {
-        
+        leagueDetailsViewModel.saveLeague(savedLeague: (leaguesViewModel?.getselectedLeague())!)
     }
     
 }
