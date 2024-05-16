@@ -1,3 +1,5 @@
+
+
 //
 //  LeagueDetailsViewModel.swift
 //  SportsApp
@@ -34,7 +36,6 @@ class LeagueDetailsViewModel : LeagueDetailsViewModelProtocol {
     var latestResults : [Upcoming]?
     
     var  selectedTeam : Team?
-    
     let db = DBManager.instance
     
     
@@ -51,12 +52,12 @@ class LeagueDetailsViewModel : LeagueDetailsViewModelProtocol {
     func loadUpcomingFixture(endPoint: String, leagueID: Int) {
         network.fetchData(from: endPoint, parameters: ["met":"Fixtures", "leagueId" : leagueID, "from":  MyDateFormatter.getCurrentDate() , "to" : MyDateFormatter.getDateToUpcommingOneYearFromNow()]){
             (result: Result<APIResponse<Upcoming>, Error>) in
-            switch result {
+           switch result {
             case .success(let upComingFixtures):
-                print ("\(MyDateFormatter.getDateToUpcommingOneYearFromNow())")
+               print ("\(MyDateFormatter.getDateToUpcommingOneYearFromNow())")
                 self.upComingFixtures = upComingFixtures.result ?? []
-                self.bindUpcomingFixtureToViewConreoller()
-                print("UpComing fetched successfully: \(String(describing: self.upComingFixtures!.count))")
+               self.bindUpcomingFixtureToViewConreoller()
+               print("UpComing fetched successfully: \(String(describing: self.upComingFixtures!.count))")
             case .failure(let error):
                 print("Error fetching UpComing: \(error)")
             }
@@ -65,21 +66,21 @@ class LeagueDetailsViewModel : LeagueDetailsViewModelProtocol {
     
     func loadLatestResults(endPoint: String, leagueID: Int) {
         
-        network.fetchData(from: endPoint, parameters: ["met":"Fixtures", "leagueId" : leagueID, "from":  MyDateFormatter.getDateToPreviousOneYearFromNow() , "to" : MyDateFormatter.getCurrentDate()]){
-            (result: Result<APIResponse<Upcoming>, Error>) in
-            switch result {
-            case .success(let latestResults):
-                
-                self.latestResults = latestResults.result ?? []
-                self.bindLatestResultsToViewConreoller()
-                print("latestResults fetched successfully: \(String(describing: self.latestResults!.count))")
-            case .failure(let error):
-                print("Error fetching latestResults: \(error)")
+            network.fetchData(from: endPoint, parameters: ["met":"Fixtures", "leagueId" : leagueID, "from":  MyDateFormatter.getDateToPreviousOneYearFromNow() , "to" : MyDateFormatter.getCurrentDate()]){
+                (result: Result<APIResponse<Upcoming>, Error>) in
+               switch result {
+                case .success(let latestResults):
+                   print ("\(MyDateFormatter.getDateToPreviousOneYearFromNow())")
+                    self.latestResults = latestResults.result ?? []
+                   self.bindLatestResultsToViewConreoller()
+                   print("latestResults fetched successfully: \(String(describing: self.latestResults!.count))")
+                case .failure(let error):
+                    print("Error fetching latestResults: \(error)")
+                }
             }
-        }
     }
     
-    
+
     func getUpcomingFixturesCount() -> Int {
         return upComingFixtures?.count ?? 0
     }
@@ -87,7 +88,7 @@ class LeagueDetailsViewModel : LeagueDetailsViewModelProtocol {
     func getLatestResultsCount() -> Int {
         return latestResults?.count ?? 0
     }
-    
+ 
     
     func getUpcomingFixtures() -> [Upcoming] {
         return upComingFixtures ?? []
@@ -104,7 +105,7 @@ class LeagueDetailsViewModel : LeagueDetailsViewModelProtocol {
     func setselectedTeam(team: Team) {
         selectedTeam = team
     }
-    
+
 }
 
 
