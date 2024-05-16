@@ -26,8 +26,8 @@ class TeamDetailsViewModel {
     func loadTeamData(){
         
         guard let teamId = teamId else {return}
-        network?.fetchData(from: "/?met=Teams", parameters: ["teamId" : teamId], completion: {
-            (result: Result<APIResponse<TeamDetails>, Error>) in
+        network?.fetchData(from: "/football/", parameters: ["met":"Teams","teamId" : teamId], completion: {
+            (result: Result<APIResponse<TeamDetailsResult>, Error>) in
             
             
             switch result {
